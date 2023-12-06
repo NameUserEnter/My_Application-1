@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MatrixActivity"
+    android:layout_marginTop="10dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"/>
+
+    <RelativeLayout
+        android:id="@+id/firstMatrixLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <TextView
+        android:id="@+id/firstMatrixSizeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Розмір матриці" />
+
+        <EditText
+            android:id="@+id/firstMatrixSizeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/firstMatrixSizeTextView"
+            android:layout_marginHorizontal="20dp"
+            android:ems="10"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Вибереіть розмірність(прик., 3х3)"
+            android:inputType="text"
+            android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/firstMatrixTextView"
+        android:layout_below="@+id/firstMatrixSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Матриця" />
+
+        <EditText
+            android:id="@+id/firstMatrixEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/firstMatrixTextView"
+            android:layout_marginHorizontal="20dp"
+            android:ems="10"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Введіть матрицю(прик., [[1,2,3],[1,2,3],[1,2,3]])"
+            android:inputType="text"
+            android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/firstMatrixOperationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/firstMatrixEditText">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="5sp"
+            android:layout_weight="1"
+            android:backgroundTint="#003b46"
+            android:onClick="onFirstMatrixDeterminantClick"
+            android:text="Визначник" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="5sp"
+            android:layout_weight="1"
+            android:backgroundTint="#003b46"
+            android:onClick="onFirstReverseMatrixClick"
+            android:text="Обернена" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/firstMatrixOperationLayout">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="5sp"
+                android:layout_weight="1"
+                android:backgroundTint="#003b46"
+                android:onClick="firstMatrixGetData"
+                android:text="Зчитати" />
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="5sp"
+                android:layout_weight="1"
+                android:backgroundTint="#003b46"
+                android:onClick="firstMatrixSaveData"
+                android:text="Зберегти" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        android:layout_below="@+id/firstMatrixLayout"/>
+
+    <LinearLayout
+        android:id="@+id/operationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/firstMatrixLayout"
+        android:layout_marginVertical="40dp"
+        >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="5sp"
+            android:layout_weight="1"
+            android:backgroundTint="#66a5ad"
+            android:onClick="matrixSum"
+            android:text="+"
+            android:textSize="25dp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:backgroundTint="#66a5ad"
+            android:onClick="matrixSub"
+            android:text="-"
+            android:textSize="25dp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="5sp"
+            android:layout_weight="1"
+            android:backgroundTint="#66a5ad"
+            android:onClick="matrixMult"
+            android:text="*"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        android:layout_above="@+id/secondMatrixLayout"/>
+
+    <RelativeLayout
+        android:id="@+id/secondMatrixLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/operationLayout">
+    <TextView
+        android:id="@+id/secondMatrixSizeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Розмір матриці" />
+
+        <EditText
+            android:id="@+id/secondMatrixSizeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/secondMatrixSizeTextView"
+            android:layout_marginHorizontal="20dp"
+            android:ems="10"
+            android:hint="Вибереіть розмірність(прик., 3х3)"
+            android:inputType="text"
+            android:textSize="15sp"
+            android:clickable="true"
+            android:focusableInTouchMode="true" />
+
+    <TextView
+        android:id="@+id/secondMatrixTextView"
+        android:layout_below="@+id/secondMatrixSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Матриця" />
+
+        <EditText
+            android:id="@+id/secondMatrixEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/secondMatrixTextView"
+            android:layout_marginHorizontal="20dp"
+            android:ems="10"
+            android:hint="Введіть матрицю(прик., [[1,2,3],[1,2,3],[1,2,3]])"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="text"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/secondMatrixOperationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/secondMatrixEditText">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="5sp"
+                android:layout_weight="1"
+                android:backgroundTint="#003b46"
+                android:onClick="onSecondMatrixDeterminantClick"
+                android:text="Визначник" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="5sp"
+                android:layout_weight="1"
+                android:backgroundTint="#003b46"
+                android:onClick="onSecondReverseMatrixClick"
+                android:text="Обернена" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/secondMatrixOperationLayout">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="5sp"
+                android:layout_weight="1"
+                android:backgroundTint="#003b46"
+                android:onClick="secondMatrixGetData"
+                android:text="Зчитати" />
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="5sp"
+                android:layout_weight="1"
+                android:backgroundTint="#003b46"
+                android:onClick="secondMatrixSaveData"
+                android:text="Зберегти" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        android:layout_below="@+id/secondMatrixLayout"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#07575b">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10sp"
+            android:layout_weight="1"
+            android:backgroundTint="#003b46"
+            android:onClick="startWorkWithMain"
+            android:text="Головна" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#003b46"
+            android:onClick="startWorkWithMatrixes"
+            android:text="Матриці" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10sp"
+            android:backgroundTint="#003b46"
+            android:onClick="startWorkWithResults"
+            android:text="Результат" />
+    </LinearLayout>
+
+
+</RelativeLayout>
